@@ -9,10 +9,14 @@ function App() {
   console.log(featPupId);
 
   console.log("puppyList: ", puppyList);
+console.log(puppies);
+  const featuredPup = puppyList.find((pup) => pup.id === featPupId);
+console.log(featuredPup);
+  
 
-  const featuredPup = puppies.find((pup) => pup.id === featPupId);
-
-  {
+  return (
+    <div className="App">
+      {
     featPupId && (
       <div>
         <h2>{featuredPup.name}</h2>
@@ -21,16 +25,14 @@ function App() {
           <li>Email: {featuredPup.email}</li>
         </ul>
       </div>
-    );
+    )
   }
-
-  return (
-    <div className="App">
       {puppies.map((puppy) => {
         return (
           <p
             onClick={() => {
               console.log("puppy id: ", puppy.id);
+              setFeatPupId(puppy.id);
             }}
             key={puppy.id}
           >
